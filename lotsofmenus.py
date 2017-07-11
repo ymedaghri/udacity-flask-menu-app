@@ -20,7 +20,7 @@ session = DBSession()
 
 
 # Menu for UrbanBurger
-restaurant1 = Restaurant(name="Urban Burger")
+restaurant1 = Restaurant(name="Urban Burger", description="", thumbnail_url="hamburger-food-meal-tasty-47725.jpeg")
 
 session.add(restaurant1)
 session.commit()
@@ -82,7 +82,7 @@ session.commit()
 
 
 # Menu for Super Stir Fry
-restaurant2 = Restaurant(name="Super Stir Fry")
+restaurant2 = Restaurant(name="Super Stir Fry", description="", thumbnail_url="pexels-photo-76093.jpeg")
 
 session.add(restaurant2)
 session.commit()
@@ -126,7 +126,7 @@ session.commit()
 
 
 # Menu for Panda Garden
-restaurant1 = Restaurant(name="Panda Garden")
+restaurant1 = Restaurant(name="Panda Garden", description="", thumbnail_url="pexels-photo-48726.jpeg")
 
 session.add(restaurant1)
 session.commit()
@@ -164,7 +164,7 @@ session.commit()
 
 
 # Menu for Thyme for that
-restaurant1 = Restaurant(name="Thyme for That Vegetarian Cuisine ")
+restaurant1 = Restaurant(name="Thyme for That Vegetarian Cuisine ", description="", thumbnail_url="food-prawn-asian.jpg")
 
 session.add(restaurant1)
 session.commit()
@@ -208,7 +208,7 @@ session.commit()
 
 
 # Menu for Tony's Bistro
-restaurant1 = Restaurant(name="Tony\'s Bistro ")
+restaurant1 = Restaurant(name="Tony\'s Bistro ", description="", thumbnail_url="food-dinner-pasta-spaghetti-8500.jpg")
 
 session.add(restaurant1)
 session.commit()
@@ -246,7 +246,7 @@ session.commit()
 
 
 # Menu for Andala's
-restaurant1 = Restaurant(name="Andala\'s")
+restaurant1 = Restaurant(name="Andala\'s", description="", thumbnail_url="pexels-photo-357756.jpeg")
 
 session.add(restaurant1)
 session.commit()
@@ -284,7 +284,7 @@ session.commit()
 
 
 # Menu for Auntie Ann's
-restaurant1 = Restaurant(name="Auntie Ann\'s Diner' ")
+restaurant1 = Restaurant(name="Auntie Ann\'s Diner' ", description="", thumbnail_url="appetizer-canape-canapes-cheese-41967.jpeg")
 
 session.add(restaurant1)
 session.commit()
@@ -334,7 +334,7 @@ session.commit()
 
 
 # Menu for Cocina Y Amor
-restaurant1 = Restaurant(name="Cocina Y Amor ")
+restaurant1 = Restaurant(name="Cocina Y Amor ", description="", thumbnail_url="food-couple-sweet-married.jpg")
 
 session.add(restaurant1)
 session.commit()
@@ -353,7 +353,7 @@ session.add(menuItem2)
 session.commit()
 
 
-restaurant1 = Restaurant(name="State Bird Provisions")
+restaurant1 = Restaurant(name="State Bird Provisions", description="", thumbnail_url="pexels-photo-316891.jpeg")
 session.add(restaurant1)
 session.commit()
 
