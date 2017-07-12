@@ -45,6 +45,10 @@
 <div class="container">
         <!-- Page Content goes here -->
 
+<div class="fixed-action-btn">
+<a class="btn-floating btn-large waves-effect waves-light red" href="{{url_for('newRestaurant')}}"><i class="material-icons">add</i></a>
+</div>
+
   <div class="row">
         {% for r in restaurants %}
         <!-- Modal Structure -->
@@ -62,16 +66,21 @@
       <div class="col s12 m6 l3">
         <div class="card">
       <div class="card-image">
-            <img src="/static/images/{{r.thumbnail_url}}">
-              <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">menu</i></a>
+            <img src="/static/images/{{r.thumbnail_url|default('pexels-photo-316891.jpeg',true)}}">
+              <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{url_for('showMenu',restaurant_id = r.id)}}"><i class="material-icons">menu</i></a>
           </div>
           <div class="card-content sample">
+           <div class="row">
           <span class="card-title grey-text text-darken-4">{{r.name}}</span>
+          </div>
+          <div class="row">
           <p><span class="new badge" data-badge-caption="$">4</span></p>
           <p>Average Menu Price</p>
-
+          </div>
+          <div class="row">
           <p><span class="new badge" data-badge-caption="Indian"></span></p>
           <p>Specialties</p>
+          </div>
           </div>
           <div class="card-action">
           <a href="#" class="activator">Edit</a>
