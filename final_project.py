@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
 
@@ -49,8 +49,10 @@ def restaurantsJSON():
 @app.route('/restaurant/')
 def showRestaurants():
     restaurants = session.query(Restaurant).all()
+    priceByRestaurant=session.query(Restaurant.id, func.avg(MenuItem.price)).join(MenuItem.restaurant).group_by(Restaurant.id).all()
+
     # return "This page will show all my restaurants"
-    return render_template('restaurants.html', restaurants=restaurants)
+    return render_template('restaurants.html', restaurants=restaurants, priceByRestaurant=priceByRestaurant)
 
 
 # Create a new restaurant
