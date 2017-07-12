@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, jsonify, url_for
+from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
@@ -60,6 +60,7 @@ def newRestaurant():
         newRestaurant = Restaurant(name=request.form['name'])
         session.add(newRestaurant)
         session.commit()
+        flash("new restaurant %s created"%newRestaurant.name)
         return redirect(url_for('showRestaurants'))
     else:
         return render_template('newRestaurant.html')
@@ -67,37 +68,26 @@ def newRestaurant():
 
 # Edit a restaurant
 
-
 @app.route('/restaurant/<int:restaurant_id>/edit/', methods=['GET', 'POST'])
 def editRestaurant(restaurant_id):
     editedRestaurant = session.query(
         Restaurant).filter_by(id=restaurant_id).one()
-    if request.method == 'POST':
-        if request.form['name']:
-            editedRestaurant.name = request.form['name']
-            return redirect(url_for('showRestaurants'))
-    else:
-        return render_template(
-            'editRestaurant.html', restaurant=editedRestaurant)
+    if request.form['name']:
+        editedRestaurant.name = request.form['name']
+        flash("Restaurant %s updated"%editedRestaurant.name)
+        return redirect(url_for('showRestaurants'))
 
-    # return 'This page will be for editing restaurant %s' % restaurant_id
 
 # Delete a restaurant
-
-
-@app.route('/restaurant/<int:restaurant_id>/delete/', methods=['GET', 'POST'])
+@app.route('/restaurant/<int:restaurant_id>/delete/', methods=['POST'])
 def deleteRestaurant(restaurant_id):
     restaurantToDelete = session.query(
         Restaurant).filter_by(id=restaurant_id).one()
-    if request.method == 'POST':
-        session.delete(restaurantToDelete)
-        session.commit()
-        return redirect(
+    session.delete(restaurantToDelete)
+    session.commit()
+    flash("Restaurant %s deleted"%restaurantToDelete.name)
+    return redirect(
             url_for('showRestaurants', restaurant_id=restaurant_id))
-    else:
-        return render_template(
-            'deleteRestaurant.html', restaurant=restaurantToDelete)
-    # return 'This page will be for deleting restaurant %s' % restaurant_id
 
 
 # Show a restaurant menu
@@ -173,5 +163,6 @@ def deleteMenuItem(restaurant_id, menu_id):
 
 
 if __name__ == '__main__':
+    app.secret_key = 'ymedaghri_flask_key'
     app.debug = True
     app.run(host='0.0.0.0', port=5000)

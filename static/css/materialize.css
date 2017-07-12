@@ -4719,6 +4719,10 @@ small {
   background-color: #fff;
 }
 
+.card-panel span {
+    -webkit-font-smoothing: antialiased;
+}
+
 .card {
   position: relative;
   margin: 0.5rem 0 1rem 0;
@@ -4871,6 +4875,7 @@ small {
 }
 
 .card .card-content .card-title {
+  -webkit-font-smoothing: antialiased;
   display: block;
   line-height: 32px;
   margin-bottom: 8px;
